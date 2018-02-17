@@ -14,9 +14,26 @@
 @media (min-width: 1200px) { ... }
 
 .quote-container{
-	border: pink 10px solid;
+	border: lightcoral 10px solid;
 }
 
 .quote-container .col{
-	padding: 20px 0px;
+	padding: 20px 10px;
+}
+
+.quote-container h3, .quote-container label{
+	color: lightcoral;
+}
+
+.quote-container label{
+	font-weight: normal;
+}
+
+.quote-container .button-img{
+	height: 50px;
+	width: 50px;
+}
+
+.quote-container .author{
+	font-weight: bold;
 }

@@ -7,20 +7,25 @@
   <div class="container-fluid">
     <div class="col col-sm-3 quote-container">
       <div class="row">
-        <h3 class="text-primary text-center">Today's Quotes on Love</h3>
+        <h3 class="text-primary text-center title">Today's Quote on Love</h3>
       </div>
       <div class="row">
         <div class="col text-center">
           <div class="message">
           </div>
+          <br>
           <div class="author">
+            <i>&mdash;&nbsp;<span></span></i>
           </div>
-          <span style="z-index:50;font-size:0.9em;"><img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/><a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #9fcc25; margin-left: 4px; vertical-align: middle;">theysaidso.com</a></span>
+          <span style="z-index:50;font-size:0.9em;"><img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/><a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: lightcoral; margin-left: 4px; vertical-align: middle;">theysaidso.com</a></span>
         </div>
       </div>
       <div class="row">
         <div class="col text-center">
-          <button id="tweetThis">Tweet This</button>
+          <label for="button-img">Tweet This Quote</label><br>
+          <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world" data-size="large">
+            <img class="button-img" src="twitter.png">
+          </a>
         </div>
       </div>
     </div>
@@ -42,8 +47,11 @@
 
   function getQuoteByCat(category){
     $.getJSON("http://quotes.rest/qod.json?category=" + category, function(json){
-        $(".message").html(JSON.stringify(json.contents.quotes[0].quote));
-        $(".author").html(JSON.stringify(json.contents.quotes[0].author));
+        var quote = json.contents.quotes[0].quote;
+        var author = json.contents.quotes[0].author
+        $(".message").html(quote);
+        $(".author span").html(author);
+        $(".twitter-share-button").attr("href", "https://twitter.com/intent/tweet?text=" + quote + " -" + author);
     });
   }
 
