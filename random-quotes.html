@@ -1,0 +1,63 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="col col-sm-3 random quote-container">
+      <div class="row">
+        <h3 class="text-primary text-center title">RandoQuotes</h3>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <div class="message">
+          </div>
+          <br>
+          <div class="author">
+            <i>&mdash;&nbsp;<span></span></i>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 text-center col">
+          <label for="button-img">Tweet This Quote</label><br>
+          <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world" data-size="large">
+            <img class="button-img" src="twitter.png">
+          </a>
+        </div>
+        <div class="col-xs-6 text-center col">
+          <label for="button-img">Skip This Quote</label><br>
+          <a class="skip-button" href="" data-size="large">
+            <img class="button-img" src="skip.png">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	<script>
+    $(document).ready(function() {
+      getQuote();
+    });
+
+  function getQuoteByCat(category){
+    $.getJSON("http://quotes.rest/qod.json?category=" + category, function(json){
+        var quote = json.contents.quotes[0].quote;
+        var author = json.contents.quotes[0].author
+        $(".message").html(quote);
+        $(".author span").html(author);
+        $(".twitter-share-button").attr("href", "https://twitter.com/intent/tweet?text=" + quote + " -" + author);
+    });
+  }
+
+  function getQuote(){
+    $.getJSON("https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?", function(json){
+        var quote = json.quoteText;
+        var author = json.quoteAuthor;
+        $(".message").html(quote);
+        $(".author span").html(author);
+    });
+  }
+</script>
+</body>

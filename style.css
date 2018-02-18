@@ -37,3 +37,11 @@
 .quote-container .author{
 	font-weight: bold;
 }
+
+.quote-container.random{
+	border: cornflowerblue 10px solid;
+}
+
+.quote-container.random h3, .quote-container.random label{
+	color: cornflowerblue;
+}
