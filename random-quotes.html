@@ -41,7 +41,7 @@
       getQuote();
     });
 
-  function getQuoteByCat(category){
+  /* function getQuoteByCat(category){
     $.getJSON("http://quotes.rest/qod.json?category=" + category, function(json){
         var quote = json.contents.quotes[0].quote;
         var author = json.contents.quotes[0].author
@@ -49,7 +49,7 @@
         $(".author span").html(author);
         $(".twitter-share-button").attr("href", "https://twitter.com/intent/tweet?text=" + quote + " -" + author);
     });
-  }
+  }*/
 
   function getQuote(){
     $.getJSON("https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?", function(json){
